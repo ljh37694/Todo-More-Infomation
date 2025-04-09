@@ -1,2 +1,19 @@
+@import url('https://fonts.googleapis.com/css?family=Black+Han+Sans:400');
 @import "tailwindcss";
 
+#root {
+  height: 100vh;
+  width: 100vw;
+}
+
+@font-face {
+  font-family: 'GmarketSansMedium';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@theme {
+  --font-title: 'Black Han Sans', sans-serif;
+  --font-content: 'GmarketSansMedium', sans-serif;
+}
