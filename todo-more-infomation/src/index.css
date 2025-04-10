@@ -9,11 +9,12 @@
 @font-face {
   font-family: 'GmarketSansMedium';
   src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
-  font-weight: normal;
+  font-weight: 700;
   font-style: normal;
 }
 
 @theme {
   --font-title: 'Black Han Sans', sans-serif;
   --font-content: 'GmarketSansMedium', sans-serif;
+  --color-success-500: #34d399;
 }
