@@ -17,7 +17,7 @@ function Todo(props: Props) {
       <div className="select-none flex items-center">
         <TodoCheckbox type="success" className="mr-3" checked={checked} setChecked={setChecked} />
       </div>
-      <p className={`font-content text ${checked ? "line-through text-gray-300" : ""}`}>{data.content}</p>
+      <p className={`font-content text ${checked ? "line-through text-gray-400" : ""}`}>{data.content}</p>
     </div>
   );
 }
