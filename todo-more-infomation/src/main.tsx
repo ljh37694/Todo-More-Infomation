@@ -12,8 +12,8 @@ const router = createBrowserRouter([
   },
   {
     path: "/add-todo",
-    element: <AddTodo />
-  }
+    element: <AddTodo />,
+  },
 ]);
 
 createRoot(document.getElementById("root")!).render(

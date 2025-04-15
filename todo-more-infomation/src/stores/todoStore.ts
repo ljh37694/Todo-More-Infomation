@@ -12,18 +12,14 @@ interface TodoStoreState {
 export const useTodoStore = create<TodoStoreState>((set) => ({
   todoList: [],
   init: (todoList) =>
-    set((state) => ({
+    set(() => ({
       todoList: todoList,
     })),
   add: (todo) => set((state) => ({ todoList: [todo, ...state.todoList] })),
   delete: (id) =>
     set((state) => ({
       todoList: [
-        ...state.todoList.filter((item) => {
-          if (item.id != id) {
-            return item;
-          }
-        }),
+        ...state.todoList.filter((item) => item.id === id),
       ],
     })),
   edit: (todo) => set((state) => ({})),

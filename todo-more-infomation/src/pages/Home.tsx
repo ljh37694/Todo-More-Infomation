@@ -1,13 +1,11 @@
 import Header from "../components/layout/Header";
+import MainLayout from "../components/layout/MainLayout";
 import TodoContainer from "../components/todo/TodoContainer";
 
 function Home() {
   return (
-    <div className="flex flex-col w-full h-full items-center py-4">
-      <Header />
-      <TodoContainer />
-    </div>
-  )
+    <MainLayout header={<Header />} content={<TodoContainer />} />
+  );
 }
 
 export default Home;
