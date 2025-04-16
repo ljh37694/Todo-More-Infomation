@@ -2,6 +2,8 @@ import Todo from "./Todo";
 import TodoAddButton from "./TodoAddButton";
 import { useNavigate } from "react-router-dom";
 import { useTodoStore } from "../../stores/todoStore";
+import { useEffect } from "react";
+import { getTodosByUserIdApi } from "../../api/todoAPi";
 
 export interface TodoType {
   id?: number;
@@ -14,6 +16,18 @@ function TodoContainer() {
   const navigate = useNavigate();
 
   const todos = useTodoStore((state) => state.todoList);
+  const setTodos = useTodoStore((state) => state.init);
+
+  useEffect(() => {
+    const fn = async () => {
+      const data = await getTodosByUserIdApi("hoon37694");
+      console.log(data);
+      
+      setTodos(data);
+    };
+
+    fn();
+  }, []);
 
   return (
     <div className="w-1/3 max-w-2xl m-auto p-6">
