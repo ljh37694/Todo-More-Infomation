@@ -16,21 +16,31 @@ function TodoForm() {
   const onSubmit = (e: React.FormEvent) => {
     e.preventDefault();
 
-    const todo: TodoType = {
-      content: text,
-      estimated: selected as Date,
-      isDone: false,
-      id: "1",
+    if (text) {
+      const todo: TodoType = {
+        content: text,
+        estimated: selected as Date,
+        isDone: false,
+      };
+
+      addTodo(todo);
+
+      navigate("/");
+    } else {
+      alert("빈 칸입니다.");
     }
-
-    addTodo(todo);
-
-    navigate("/");
-  }
+  };
 
   return (
-    <form onSubmit={onSubmit} className="flex flex-col justify-center m-auto w-80 items-center h-full">
-      <input type="text" onChange={(e) => setText(e.target.value)} className="border rounded-xl py-2 px-4 my-8" />
+    <form
+      onSubmit={onSubmit}
+      className="flex flex-col justify-center m-auto w-80 items-center h-full"
+    >
+      <input
+        type="text"
+        onChange={(e) => setText(e.target.value)}
+        className="border rounded-xl py-2 px-4 my-8"
+      />
       <DayPicker
         animate
         mode="single"

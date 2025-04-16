@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { useTodoStore } from "../../stores/todoStore";
 
 export interface TodoType {
-  id?: string;
+  id?: number;
   content: string;
   estimated: Date;
   isDone: false;
