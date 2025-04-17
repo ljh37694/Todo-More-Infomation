@@ -1,8 +1,6 @@
 package com.hoon37694.tmi.todo;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -19,5 +17,15 @@ public class TodoController {
         System.out.println(id);
 
         return todoService.getTodosByUserId(id);
+    }
+
+    @PostMapping(path = "/todos")
+    public Todo addTodo(@RequestBody Todo todo) {
+        return todoService.insertTodo(todo);
+    }
+
+    @DeleteMapping(path = "/todos/{id}")
+    public void deleteTodoById(@PathVariable int id) {
+        todoService.deleteTodoById(id);
     }
 }

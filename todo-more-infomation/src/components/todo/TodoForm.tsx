@@ -20,6 +20,7 @@ function TodoForm() {
       const todo: TodoType = {
         content: text,
         estimated: selected as Date,
+        userId: "hoon37694",
         isDone: false,
       };
 

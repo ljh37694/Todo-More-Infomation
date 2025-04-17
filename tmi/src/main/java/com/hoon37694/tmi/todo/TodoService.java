@@ -8,10 +8,10 @@ import java.util.List;
 
 @Service
 public class TodoService {
-    private static List<Todo> todos = new ArrayList<>();
+    private List<Todo> todos = new ArrayList<>();
     private int cnt = 0;
 
-    static {
+    public TodoService() {
         todos.add(new Todo(1, "Hello World!", new Date(), false, "hoon37694"));
         todos.add(new Todo(2, "Hello World!", new Date(), false, "hoon37694"));
         todos.add(new Todo(5, "Hello World!", new Date(), false, "hoon37694"));
@@ -23,5 +23,23 @@ public class TodoService {
                 .stream()
                 .filter(todo -> todo.getUserId().equals(userId))
                 .toList();
+    }
+
+    public Todo insertTodo(Todo todo) {
+        todo.setId(todos.size() + 1);
+
+        todos.add(todo);
+
+        System.out.println(todo);
+
+        return todo;
+    }
+
+    public void deleteTodoById(int id) {
+        todos.removeIf(todo -> todo.getId() == id);
+    }
+
+    public void updateTodo(Todo todo) {
+
     }
 }

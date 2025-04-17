@@ -3,12 +3,13 @@ import TodoAddButton from "./TodoAddButton";
 import { useNavigate } from "react-router-dom";
 import { useTodoStore } from "../../stores/todoStore";
 import { useEffect } from "react";
-import { getTodosByUserIdApi } from "../../api/todoAPi";
+import { getTodosByUserIdApi } from "../../api/todoApi";
 
 export interface TodoType {
   id?: number;
   content: string;
   estimated: Date;
+  userId: string,
   isDone: false;
 }
 
