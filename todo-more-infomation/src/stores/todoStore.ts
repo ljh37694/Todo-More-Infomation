@@ -1,6 +1,6 @@
 import { create } from "zustand";
 import { TodoType } from "../components/todo/TodoContainer";
-import { deleteTodoById, postTodosApi } from "../api/todoApi";
+import { deleteTodoByIdApi, postTodosApi, updateTodoApi } from "../api/todoApi";
 
 interface TodoStoreState {
   todoList: TodoType[];
@@ -17,25 +17,27 @@ export const useTodoStore = create<TodoStoreState>((set) => ({
       todoList: todoList,
     })),
   add: (todo) => set((state) => {
-    const id: number = Math.floor(Math.random() * 1000000);
-
-    todo.id = id;
+    let newTodo: TodoType = todo;
 
     postTodosApi(todo)
-      .then((res) => console.log(res))
+      .then((res) => newTodo = res)
       .catch((e) => console.log(e));
 
     return {
-      todoList: [todo, ...state.todoList],
+      todoList: [newTodo, ...state.todoList],
     }
   }),
   delete: (id) =>
     set((state) => {
-      deleteTodoById(id);
+      deleteTodoByIdApi(id);
 
       return {
         todoList: [...state.todoList.filter((todo) => todo.id !== id)]
       }
     }),
-  edit: (todo) => set((state) => ({})),
+  edit: (todo) => set((state) => {
+    updateTodoApi(todo);
+
+    return {}
+  }),
 }));

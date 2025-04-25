@@ -25,6 +25,13 @@ public class TodoService {
                 .toList();
     }
 
+    public Todo getTodoById(int id) {
+        Todo tmp = todos.stream().filter(todo -> todo.getId() == id).toList().getFirst();
+        System.out.println(tmp);
+
+        return tmp;
+    }
+
     public Todo insertTodo(Todo todo) {
         todo.setId(todos.size() + 1);
 
@@ -40,6 +47,14 @@ public class TodoService {
     }
 
     public void updateTodo(Todo todo) {
-
+        System.out.println(todo);
+        
+        for (int i = 0; i < todos.size(); i++) {
+            System.out.println(todos.get(i));
+            if (todos.get(i).getId() == todo.getId()) {
+                todos.set(i, todo);
+                System.out.println("updated " + todo);
+            }
+        }
     }
 }

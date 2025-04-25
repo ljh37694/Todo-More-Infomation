@@ -2,8 +2,9 @@ import { useState } from "react";
 import TodoCheckbox from "./TodoCheckbox";
 import { TodoType } from "./TodoContainer";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import { faPencil, faTrash } from "@fortawesome/free-solid-svg-icons";
 import { useTodoStore } from "../../stores/todoStore";
+import { useNavigate } from "react-router-dom";
 
 interface Props {
   data: TodoType;
@@ -12,6 +13,8 @@ interface Props {
 
 function Todo(props: Props) {
   const { data, className } = props;
+
+  const navigate = useNavigate();
 
   const [checked, setChecked] = useState<boolean>(false);
   const deleteTodo = useTodoStore((state) => state.delete);
@@ -24,7 +27,13 @@ function Todo(props: Props) {
     if (typeof data.id === "number") {
       deleteTodo(data.id);
     }
-  }
+  };
+
+  const onClickEditButton = (e: React.MouseEvent) => {
+    e.preventDefault();
+
+    navigate("/todos/edit/" + data.id);
+  };
 
   return (
     <div className={`${className} flex items-center py-4`}>
@@ -45,8 +54,18 @@ function Todo(props: Props) {
         {data.content}
       </p>
 
-      <section>
-        <label onClick={onClickTrashButton} className="text-red-500 cursor-pointer hover:bg-gray-200 p-1 ms-1">
+      <section className="flex">
+        <label
+          onClick={onClickEditButton}
+          className="text-yellow-500 cursor-pointer hover:bg-gray-200 p-1 ms-1"
+        >
+          <FontAwesomeIcon icon={faPencil} />
+        </label>
+
+        <label
+          onClick={onClickTrashButton}
+          className="text-red-500 cursor-pointer hover:bg-gray-200 p-1 ms-1"
+        >
           <FontAwesomeIcon icon={faTrash} />
         </label>
       </section>

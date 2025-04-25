@@ -12,11 +12,18 @@ public class TodoController {
         this.todoService = todoService;
     }
 
-    @GetMapping(path = "/todos/{id}")
+    @GetMapping(path = "/users/{id}")
     public List<Todo> retrieveTodosByUserId(@PathVariable String id) {
         System.out.println(id);
 
         return todoService.getTodosByUserId(id);
+    }
+
+    @GetMapping(path = "/todos/{id}")
+    public Todo retrieveTodoById(@PathVariable int id) {
+        System.out.println(id);
+
+        return todoService.getTodoById(id);
     }
 
     @PostMapping(path = "/todos")
@@ -27,5 +34,10 @@ public class TodoController {
     @DeleteMapping(path = "/todos/{id}")
     public void deleteTodoById(@PathVariable int id) {
         todoService.deleteTodoById(id);
+    }
+
+    @PutMapping(path = "/todos")
+    public void updateTodo(@RequestBody Todo todo) {
+        todoService.updateTodo(todo);
     }
 }
