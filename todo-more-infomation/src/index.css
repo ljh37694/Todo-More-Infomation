@@ -18,3 +18,12 @@
   --font-content: 'GmarketSansMedium', sans-serif;
   --color-success-500: #34d399;
 }
+
+.scroll-hidden {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+
+  -ms-overflow-style: none; /* IE, Edge */
+  scrollbar-width: none; /* Firefox */
+}

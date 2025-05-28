@@ -14,8 +14,20 @@ public class TodoService {
     public TodoService() {
         todos.add(new Todo(1, "Hello World!", new Date(), false, "hoon37694"));
         todos.add(new Todo(2, "Hello World!", new Date(), false, "hoon37694"));
-        todos.add(new Todo(5, "Hello World!", new Date(), false, "hoon37694"));
         todos.add(new Todo(3, "Hello World!", new Date(), false, "hoon37694"));
+        todos.add(new Todo(4, "Hello World!", new Date(), false, "hoon37694"));
+        todos.add(new Todo(5, "Hello World!", new Date(), false, "hoon37694"));
+        todos.add(new Todo(6, "Hello World!", new Date(), false, "hoon37694"));
+        todos.add(new Todo(7, "Hello World!", new Date(), false, "hoon37694"));
+        todos.add(new Todo(8, "Hello World!", new Date(), false, "hoon37694"));
+        todos.add(new Todo(9, "Hello World!", new Date(), false, "hoon37694"));
+        todos.add(new Todo(10, "Hello World!", new Date(), false, "hoon37694"));
+        todos.add(new Todo(11, "Hello World!", new Date(), false, "hoon37694"));
+        todos.add(new Todo(12, "Hello World!", new Date(), false, "hoon37694"));
+        todos.add(new Todo(13, "Hello World!", new Date(), false, "hoon37694"));
+        todos.add(new Todo(14, "Hello World!", new Date(), false, "hoon37694"));
+        todos.add(new Todo(15, "Hello World!", new Date(), false, "hoon37694"));
+        todos.add(new Todo(16, "Hello World!", new Date(), false, "hoon37694"));
     }
 
     public List<Todo> getTodosByUserId(String userId) {
@@ -47,8 +59,6 @@ public class TodoService {
     }
 
     public void updateTodo(Todo todo) {
-        System.out.println(todo);
-        
         for (int i = 0; i < todos.size(); i++) {
             System.out.println(todos.get(i));
             if (todos.get(i).getId() == todo.getId()) {
